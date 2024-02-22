@@ -1,0 +1,44 @@
+class Customer implements DiscountRate {
+    private String customerName;
+    private String customerType;
+
+    public Customer(String customerName, String customerType) {
+        this.customerName = customerName;
+        this.customerType = customerType;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
+    }
+
+    @Override
+    public double getServiceDiscountRate(String type) {
+        switch (type.toLowerCase()) {
+            case "premium":
+                return 0.20;
+            case "gold":
+                return 0.15;
+            case "silver":
+                return 0.10;
+            default:
+                return 0.0;
+        }
+    }
+
+    @Override
+    public double getProductDiscountRate(String type) {
+        return 0.10;
+    }
+}
